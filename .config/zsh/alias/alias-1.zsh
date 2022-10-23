@@ -1,0 +1,8 @@
+alias "ytm"="screen yt-music-search"
+alias "lunar"="screen ~/Applications/Game/LunarClient/run1.sh"
+alias "lunar-socket"="npm --prefix=/home/mon/PhpstormProjects/LunarSocket run start"
+alias "figma"="LD_PRELOAD=/usr/lib/libm.so.6 /usr/bin/figma-linux"
+alias "py"="python3"
+alias "v"="nvim"
+alias "lock"="i3lock -c 000000"
+alias "l"="lsd"
