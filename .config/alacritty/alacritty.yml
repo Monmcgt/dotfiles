@@ -1,0 +1,42 @@
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+
+env:
+  TERM: xterm-256color
+
+window:
+  padding:
+    x: 5
+    y: 5
+
+  dynamic_padding: true
+
+  decorations: full
+
+  opacity: 0.60
+ 
+  dynamic_title: true
+
+font:
+  normal:
+    family: monospace
+    style: Regular
+
+  bold:
+    family: monospace
+    style: Bold
+
+  italic:
+    family: monospace
+    style: Italic
+
+  bold_italic:
+    family: monospace
+    style: Bold Italic
+
+  size: 10
+
+cursor:
+  style:
+    shape: Beam
+    blinking: Off
