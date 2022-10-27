@@ -39,6 +39,8 @@ for_window [title="CopyQ"] floating enable
 for_window [title="CopyQ"] move position center
 for_window [window_role="GtkFileChooserDialog"] resize set 800 600
 for_window [window_role="GtkFileChooserDialog"] move position center
+for_window [class="line.exe"] floating enable
+for_window [class="line.exe" title="LINE"] resize set 900 600
 
 
 
@@ -79,7 +81,7 @@ bindcode $mod+Shift+$k            move up
 ## l
 bindcode $mod+$l                  focus right
 bindcode $mod+Shift+$l            move right
-bindcode Control+$alt+$l          exec --no-startup-id i3lock -c 000000
+bindcode $mod+Control+$l          exec --no-startup-id i3lock -c 000000
 
 ## m
 
@@ -143,8 +145,13 @@ bindcode $mod+Shift+$minus        move scratchpad
 bindsym $mod+Return               exec $terminal
 
 ## others
-bindcode $alt+$caps_lock          exec --no-startup-id bk key-switch
+bindcode $caps_lock               exec --no-startup-id bk key-switch
 bindcode $prntscrn                exec --no-startup-id bk flameshot gui
+
+## number
+bindcode $mod+$alt+$1             layout toggle split
+bindcode $mod+$alt+$2             layout stacking
+bindcode $mod+$alt+$3             layout tabbed
 
 
 
@@ -279,6 +286,7 @@ set $9 18
 set $0 19
 set $minus 20
 set $caps_lock 66
+set $alt_code 64
 set $prntscrn 107
 set $shift 50
 set $space 65
