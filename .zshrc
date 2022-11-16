@@ -5,7 +5,9 @@ other_init revamped-manjaro-zsh-config.zsh
 # #-----Pre Hooks-----# #
 
 # #-----Pre Runs-----# #
-prerun_init neofetch.zsh
+#prerun_init neofetch.zsh
+#prerun_init rxfetch.zsh
+#prerun_init pokemon-colorscripts.zsh
 
 # #-----Constants-----# #
 constant_init locale.zsh
