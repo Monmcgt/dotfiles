@@ -1,0 +1,6 @@
+--experimental-backends
+--animations
+--animation-for-open-window zoom
+--animation-stiffness 200.0
+--animation-dampening 25.0
+--animation-window-mass 1.0
