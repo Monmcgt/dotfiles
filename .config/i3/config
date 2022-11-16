@@ -33,15 +33,26 @@ gaps outer $outer_gaps
 
 
 # #---Automations---# #
-# Assigning autofloat
+## Assigning
+# Title Specific (starts with '[i3-wm; floating]')
+for_window [title="^.*\[i3-wm; floating\].*$"] floating enable
+# Emulator
 for_window [title=".*Emulator.*"] floating enable
+# CopyQ
 for_window [title="CopyQ"] floating enable
 for_window [title="CopyQ"] move position center
+# GtkFileChooserDialog
 for_window [window_role="GtkFileChooserDialog"] resize set 800 600
 for_window [window_role="GtkFileChooserDialog"] move position center
-for_window [class="line.exe"] floating enable
+# Firefox
+for_window [class="firefox"] move to workspace $ws3
+# Line
+for_window [class="linelauncher.exe"] move to workspace $ws4
 for_window [class="line.exe" title="LINE"] resize set 900 600
-
+for_window [class="line.exe" title="LINE"] move to workspace $ws4
+for_window [class="linemediaplayer.exe"] move to workspace $ws14
+# Discord
+for_window [class="discord"] move to workspace $ws2
 
 
 # #---Basic Bindings---# #
@@ -53,9 +64,12 @@ bindcode $mod+$b                  exec --no-startup-id boomer
 ## c
 
 ## d
-bindcode $mod+$d                  exec --no-startup-id dmenu_run -b -i -p "Run:"
+#bindcode $mod+$d                  exec --no-startup-id dmenu_run -b -i -p "Run:"
+bindcode $mod+$d                  exec --no-startup-id LC_ALL=en_GB.UTF-8 rofi -show drun 
+bindcode $mod+Shift+$d            exec --no-startup-id LC_ALL=en_GB.UTF-8 rofi -show run
 
 ## e
+bindcode $mod+$e                  exec --no-startup-id LC_ALL=en_GB.UTF-8 rofi -show window
 
 ## f
 bindcode $mod+Shift+$f            fullscreen toggle
@@ -95,6 +109,7 @@ bindcode $mod+Control+$l          exec --no-startup-id i3lock -c 000000
 bindcode $mod+$q 		              kill
 
 ## r
+bindcode $mod+$r                  mode "resize"
 
 ## s
 
@@ -107,6 +122,7 @@ bindcode $mod+$q 		              kill
 bindcode $alt+$v                  split v
 
 ## w
+bindcode $mod+$w                  mode "workspace"
 
 ## x
 
@@ -149,9 +165,9 @@ bindcode $caps_lock               exec --no-startup-id bk key-switch
 bindcode $prntscrn                exec --no-startup-id bk flameshot gui
 
 ## number
-bindcode $mod+$alt+$1             layout toggle split
-bindcode $mod+$alt+$2             layout stacking
-bindcode $mod+$alt+$3             layout tabbed
+#bindcode $mod+$alt+$1             layout toggle split
+#bindcode $mod+$alt+$2             layout stacking
+#bindcode $mod+$alt+$3             layout tabbed
 
 
 
@@ -166,6 +182,16 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
+set $ws15 "15"
+set $ws16 "16"
+set $ws17 "17"
+set $ws18 "18"
+set $ws19 "19"
+set $ws20 "20"
 
 bindcode $mod+$1 workspace number $ws1
 bindcode $mod+$2 workspace number $ws2
@@ -197,7 +223,7 @@ bindcode $mod+Shift+$c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindcode $mod+Shift+$r restart
 # exit i3 (logs you out of your X session)
-bindcode $mod+Shift+$e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#bindcode $mod+Shift+$e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -211,8 +237,51 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindcode $mod+$r mode "resize"
+mode "workspace" {
+        bindcode $1 workspace number $ws1
+        bindcode $2 workspace number $ws2
+        bindcode $3 workspace number $ws3
+        bindcode $4 workspace number $ws4
+        bindcode $5 workspace number $ws5
+        bindcode $6 workspace number $ws6
+        bindcode $7 workspace number $ws7
+        bindcode $8 workspace number $ws8
+        bindcode $9 workspace number $ws9
+        bindcode $0 workspace number $ws10
+        bindcode $q workspace number $ws11
+        bindcode $w workspace number $ws12
+        bindcode $e workspace number $ws13
+        bindcode $r workspace number $ws14
+        bindcode $t workspace number $ws15
+        bindcode $y workspace number $ws16
+        bindcode $u workspace number $ws17
+        bindcode $i workspace number $ws18
+        bindcode $o workspace number $ws19
+        bindcode $p workspace number $ws20
 
+        bindcode Shift+$1 move container to workspace number $ws1
+        bindcode Shift+$2 move container to workspace number $ws2
+        bindcode Shift+$3 move container to workspace number $ws3
+        bindcode Shift+$4 move container to workspace number $ws4
+        bindcode Shift+$5 move container to workspace number $ws5
+        bindcode Shift+$6 move container to workspace number $ws6
+        bindcode Shift+$7 move container to workspace number $ws7
+        bindcode Shift+$8 move container to workspace number $ws8
+        bindcode Shift+$9 move container to workspace number $ws9
+        bindcode Shift+$0 move container to workspace number $ws10
+        bindcode Shift+$q move container to workspace number $ws11
+        bindcode Shift+$w move container to workspace number $ws12
+        bindcode Shift+$e move container to workspace number $ws13
+        bindcode Shift+$r move container to workspace number $ws14
+        bindcode Shift+$t move container to workspace number $ws15
+        bindcode Shift+$y move container to workspace number $ws16
+        bindcode Shift+$u move container to workspace number $ws17
+        bindcode Shift+$i move container to workspace number $ws18
+        bindcode Shift+$o move container to workspace number $ws19
+        bindcode Shift+$p move container to workspace number $ws20
+
+        bindsym Escape mode "default"
+}
 
 
 # #---Bar---# #
@@ -246,7 +315,7 @@ client.placeholder       #000000 #0c0c0c #ffffff #000000 #0c0c0c
 #exec_always for id in $(xinput list | grep "pointer" | cut -d '=' -f 2 | cut -f 1); do xinput --set-prop $id 'libinput Accel Profile Enabled' 0, 1; done
 ## Initer
 #exec_always /usr/bin/npm --prefix "/home/mon/IdeaProjects/Initer" run start
-exec_always /home/mon/.sdkman/candidates/kotlin/current/bin/kotlin -cp /home/mon/IdeaProjects/Initer/build/classes/kotlin/main me.monmcgt.code.Main
+exec_always /home/mon/.sdkman/candidates/kotlin/current/bin/kotlin -cp /home/mon/IdeaProjects/Initer/out/production/classes me.monmcgt.code.Main
 
 set $a 38
 set $b 56
